@@ -1,4 +1,5 @@
 import { Box } from '@material-ui/system'
+import AppTitle from 'components/AppTitle'
 import PlayerCardList from 'components/PlayerCardList'
 import React, { useState } from 'react'
 
@@ -43,7 +44,13 @@ export default function index() {
   }
 
   return (
-    <Box display="flex" justifyContent="center">
+    <Box
+      display="flex"
+      justifyContent="center"
+      flexDirection="column"
+      alignItems="center"
+    >
+      <AppTitle title="Random Student by AlexTheBest" />
       <PlayerCardList
         players={pList}
         onRemove={(id) => removeUser(id)}
