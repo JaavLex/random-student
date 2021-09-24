@@ -1,11 +1,11 @@
 import { Button } from '@material-ui/core'
 
-type AppTitleProps = {
+type AppButtonProps = {
   text: string
   onClickButton: () => void
 }
 
-export default function AppTitle({ text, onClickButton }: AppTitleProps) {
+export default function AppButton({ text, onClickButton }: AppButtonProps) {
   return (
     <Button
       variant="contained"

@@ -1,5 +1,5 @@
 import { InputBase } from '@material-ui/core'
 
-export default function AppTitle() {
+export default function AppInput() {
   return <InputBase />
 }
