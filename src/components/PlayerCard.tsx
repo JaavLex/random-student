@@ -47,7 +47,18 @@ export default function PlayerCard({
       <Typography
         color="textPrimary"
         sx={{
-          fontFamily: 'Work Sans',
+          fontFamily: [
+            '-apple-system',
+            'BlinkMacSystemFont',
+            '"Segoe UI"',
+            'Roboto',
+            '"Helvetica Neue"',
+            'Arial',
+            'sans-serif',
+            '"Apple Color Emoji"',
+            '"Segoe UI Emoji"',
+            '"Segoe UI Symbol"',
+          ],
           fontSize: 20,
           width: '100%',
           fontWeight: 'bold',

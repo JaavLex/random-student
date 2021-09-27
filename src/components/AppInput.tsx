@@ -1,5 +1,14 @@
 import { InputBase } from '@material-ui/core'
 
-export default function AppInput() {
-  return <InputBase />
+type AppInputProps = {
+  onChangeInput: (event: any) => void
+}
+
+export default function AppInput({ onChangeInput }: AppInputProps) {
+  return (
+    <InputBase
+      onChange={(event) => onChangeInput(event)}
+      placeholder="Enter a name here..."
+    />
+  )
 }

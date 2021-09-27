@@ -4,10 +4,14 @@ import { Box } from '@material-ui/system'
 import React from 'react'
 
 type AppAddUserProps = {
-  onAdd: () => void
+  onAdd: (uName: string) => void
 }
 
 export default function AppAddUser({ onAdd }: AppAddUserProps) {
+  let userName = ''
+  function saveUserName(username: string) {
+    userName = username
+  }
   return (
     <Box
       maxWidth="600px"
@@ -15,10 +19,10 @@ export default function AppAddUser({ onAdd }: AppAddUserProps) {
       flexDirection="row"
       bgcolor="background.paper"
       padding={1}
-      borderRadius={8}
+      borderRadius={2}
     >
-      <AppInput />
-      <AppButton text="Add person" onClickButton={() => onAdd()} />
+      <AppInput onChangeInput={(event) => saveUserName(event.target.value)} />
+      <AppButton text="Add person" onClickButton={() => onAdd(userName)} />
     </Box>
   )
 }

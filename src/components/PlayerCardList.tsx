@@ -15,10 +15,12 @@ export default function PlayerCardList({
     <Box
       width={600}
       padding={1}
+      margin={1}
+      minHeight="50px"
       height="100%"
       overflow="hidden scroll"
       bgcolor="background.paper"
-      borderRadius={8}
+      borderRadius={2}
     >
       <Box
         display="flex"
