@@ -5,32 +5,39 @@ import AppButton from 'components/AppButton'
 import AppTitle from 'components/AppTitle'
 import PlayerCardList from 'components/PlayerCardList'
 import React, { useState } from 'react'
+import { useLocalStorageState } from 'hooks/useLocalStorageState'
 
 export default function index() {
-  const [pList, setPList] = useState([])
-  const [uIndex, setUIndex] = useState(1)
+  const [lList, setLList] = useLocalStorageState(
+    'jaavlex-randomstudent-list',
+    []
+  )
+
+  const [uIndex, setUIndex] = useState(
+    Math.floor((Math.random() * 10 * 10) ^ 20)
+  )
   const [sUser, setSUser] = useState('')
   const [open, setOpen] = React.useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
   function removeUser(playerId: number) {
-    const tempPList = [...pList]
-    pList.forEach(
-      (e: any, i: any) => e.id == playerId && tempPList.splice(i, 1)
+    const templList = [...lList]
+    lList.forEach(
+      (e: any, i: any) => e.id == playerId && templList.splice(i, 1)
     )
-    setPList(tempPList)
+    setLList(templList)
   }
 
   function addUser(userName: string) {
-    const tempPList = [...pList]
-    tempPList.push({ id: uIndex, username: userName })
-    setPList(tempPList)
-    setUIndex(uIndex + 1)
+    const templList = [...lList]
+    templList.push({ id: uIndex, username: userName })
+    setLList(templList)
+    setUIndex(Math.floor((Math.random() * 10 * 10) ^ 20))
   }
 
   function selectUser() {
-    setSUser(pList[Math.floor(Math.random() * pList.length)].username)
+    setSUser(lList[Math.floor(Math.random() * lList.length)].username)
   }
 
   return (
@@ -42,17 +49,15 @@ export default function index() {
     >
       <AppTitle title="Random Student by AlexTheBest" />
       <AppAddUser onAdd={(uName) => addUser(uName)} />
-      {pList.length > 0 && (
-        <Box
-          display="flex"
-          justifyContent="center"
-          flexDirection="column"
-          alignItems="center"
-        >
-          <PlayerCardList players={pList} onRemove={(id) => removeUser(id)} />
-          <AppButton text="Choose random guy" onClickButton={handleOpen} />
-        </Box>
-      )}
+      <Box
+        display="flex"
+        justifyContent="center"
+        flexDirection="column"
+        alignItems="center"
+      >
+        <PlayerCardList players={lList} onRemove={(id) => removeUser(id)} />
+        <AppButton text="Choose random guy" onClickButton={handleOpen} />
+      </Box>
 
       <Modal
         open={open}

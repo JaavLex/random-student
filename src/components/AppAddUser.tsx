@@ -1,17 +1,14 @@
 import AppInput from './AppInput'
 import AppButton from './AppButton'
 import { Box } from '@material-ui/system'
-import React from 'react'
+import React, { useState } from 'react'
 
 type AppAddUserProps = {
   onAdd: (uName: string) => void
 }
 
 export default function AppAddUser({ onAdd }: AppAddUserProps) {
-  let userName = ''
-  function saveUserName(username: string) {
-    userName = username
-  }
+  const [userName, setUserName] = useState('')
   return (
     <Box
       maxWidth="600px"
@@ -21,7 +18,7 @@ export default function AppAddUser({ onAdd }: AppAddUserProps) {
       padding={1}
       borderRadius={2}
     >
-      <AppInput onChangeInput={(event) => saveUserName(event.target.value)} />
+      <AppInput onChangeInput={(event) => setUserName(event.target.value)} />
       <AppButton text="Add person" onClickButton={() => onAdd(userName)} />
     </Box>
   )
